@@ -6,28 +6,43 @@ import java.util.List;
 
 public class Patient {
 
-        public String name;
-        public String lastname;
-        public Date birthdate;
-        public String phone;
-        public String city;
-        public String email;
-        public List<Patient> patientList = new ArrayList<Patient>();
+    public int patientId; //pk
+    public String name;
+    public String lastname;
+    public Date birthdate;
+    public String phone;
+    public String city;
+    public String email;
+    public List<Patient> patientList = new ArrayList<Patient>();
 
-        public void addPatient(Patient patient)
-        {
-            patientList.add(patient);
-        }
+    public void addPatient(Patient patient) {
+        patientList.add(patient);
+    }
 
-        // SELECT (NOMBRE)
-    // UPDATE (PAC)
-    // DELETE (NOMBRE)
+    public Patient() {
+    }
+
+    public Patient selectPatient(int patientId) {
+        int pos = patientList.indexOf(patientId);
+        return patientList.get(pos);
+    }
+
+    public Patient updatePatient(Patient patient) {
+        int pos = patientList.indexOf(patientId);
+        Patient toDelete = patientList.get(pos);
+        patientList.remove(toDelete);
+        patientList.add(patient);
+        return patient;
+
+    }
+
+    public void deletePatient(int patientId) {
+        int pos = patientList.indexOf(patientId);
+        Patient toDelete = patientList.get(pos);
+        patientList.remove(toDelete);
 
 
     }
 
-
-
-
-
+}
 
